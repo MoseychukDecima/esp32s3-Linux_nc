@@ -16,8 +16,8 @@ CTNG_VER=xtensa-fdpic
 CTNG_CONFIG=xtensa-esp32s3-linux-uclibcfdpic
 BUILDROOT_VER=xtensa-2024.05-fdpic_mpy_nc
 BUILDROOT_CONFIG=esp32s3_defconfig
-ESP_HOSTED_VER=ipc-5.1.1
-ESP_HOSTED_CONFIG=sdkconfig.defaults.esp32s3
+ESP_HOSTED_VER=ipc-5.1.1_N16R8
+ESP_HOSTED_CONFIG=sdkconfig.defaults.esp32s3_n16r8
 
 if [ ! -d autoconf-2.71/root/bin ] ; then
 	wget https://ftp.gnu.org/gnu/autoconf/autoconf-2.71.tar.xz
@@ -85,7 +85,7 @@ nice make -C buildroot O=`pwd`/build-buildroot-esp32s3
 #
 # bootloader
 #
-[ -d esp-hosted ] || git clone https://github.com/jcmvbkbc/esp-hosted -b $ESP_HOSTED_VER
+[ -d esp-hosted ] || git clone https://github.com/johandevlabs/esp-hosted -b $ESP_HOSTED_VER
 pushd esp-hosted/esp_hosted_ng/esp/esp_driver
 cmake .
 cd esp-idf
